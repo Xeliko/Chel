@@ -1,2 +1,3 @@
-# Chel
+# C++
+
 Homework
