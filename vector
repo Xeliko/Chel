@@ -1,0 +1,137 @@
+#include <iostream>
+using namespace std;
+
+
+template <typename T>
+class Vector {
+private:
+    T* array;
+    size_t capacity;
+    size_t currentSize;
+
+public:
+    
+    Vector() : array(nullptr), capacity(0), currentSize(0) {}
+
+    Vector(const Vector& other) : array(new T[other.capacity]), capacity(other.capacity), currentSize(other.currentSize) {
+        for (size_t i = 0; i < currentSize; ++i) {
+            array[i] = other.array[i];
+        }
+    }
+
+    Vector& operator=(const Vector& other) {
+        if (this != &other) {
+            delete[] array;
+            array = new T[other.capacity];
+            capacity = other.capacity;
+            currentSize = other.currentSize;
+            for (size_t i = 0; i < currentSize; ++i) {
+                array[i] = other.array[i];
+            }
+        }
+        return *this;
+    }
+
+    ~Vector() {
+        delete[] array;
+    }
+
+    
+    void push_back(const T& value) {
+        if (currentSize == capacity) {
+            size_t newCapacity = (capacity == 0) ? 1 : capacity * 2;
+            T* newArray = new T[newCapacity];
+            for (size_t i = 0; i < currentSize; ++i) {
+                newArray[i] = array[i];
+            }
+            delete[] array;
+            array = newArray;
+            capacity = newCapacity;
+        }
+        array[currentSize] = value;
+        ++currentSize;
+    }
+
+    void pop_back() {
+        if (currentSize > 0) {
+            --currentSize;
+        }
+    }
+
+    size_t size() const {
+        return currentSize;
+    }
+
+    bool empty() const {
+        return currentSize == 0;
+    }
+
+    void clear() {
+        currentSize = 0;
+    }
+
+    T* begin() {
+        return array;
+    }
+
+    T* end() {
+        return array + currentSize;
+    }
+
+    const T& operator[](size_t index) const {
+        if (index >= currentSize) {
+            throw std::out_of_range("Index out of range");
+        }
+        return array[index];
+    }
+
+    T& operator[](size_t index) {
+        if (index >= currentSize) {
+            throw out_of_range("Index out of range");
+        }
+        return array[index];
+    }
+
+    void insert(size_t index, const T& value) {
+        if (index > currentSize) {
+            throw out_of_range("Index out of range");
+        }
+        if (currentSize == capacity) {
+            size_t newCapacity = (capacity == 0) ? 1 : capacity * 2;
+            T* newArray = new T[newCapacity];
+            for (size_t i = 0; i < index; ++i) {
+                newArray[i] = array[i];
+            }
+            newArray[index] = value;
+            for (size_t i = index; i < currentSize; ++i) {
+                newArray[i + 1] = array[i];
+            }
+            delete[] array;
+            array = newArray;
+            capacity = newCapacity;
+        }
+        else {
+            for (size_t i = currentSize; i > index; --i) {
+                array[i] = array[i - 1];
+            }
+            array[index] = value;
+        }
+        ++currentSize;
+    }
+};
+
+
+
+
+int main() {
+    Vector<int> vec;
+    vec.push_back(10);
+    vec.push_back(20);
+    vec.push_back(30);
+
+    for (size_t i = 0; i < vec.size(); ++i) {
+        cout << vec[i] << " ";
+    }
+
+    return 0;
+}
