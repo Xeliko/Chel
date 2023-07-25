@@ -1,0 +1,111 @@
+#include <iostream>
+
+using namespace std;
+
+struct TreeNode {
+    int key;
+    TreeNode* left;
+    TreeNode* right;
+
+    TreeNode(int val) : key(val), left(nullptr), right(nullptr) {}
+};
+
+class BinarySearchTree {
+private:
+    TreeNode* root;
+
+    TreeNode* insertRecursive(TreeNode* node, int key) {
+        if (node == nullptr) {
+            return new TreeNode(key);
+        }
+
+        if (key < node->key) {
+            node->left = insertRecursive(node->left, key);
+        } else if (key > node->key) {
+            node->right = insertRecursive(node->right, key);
+        }
+
+        return node;
+    }
+
+    TreeNode* findMinNode(TreeNode* node) {
+        if (node == nullptr) {
+            return nullptr;
+        }
+        while (node->left != nullptr) {
+            node = node->left;
+        }
+        return node;
+    }
+
+    TreeNode* deleteRecursive(TreeNode* node, int key) {
+        if (node == nullptr) {
+            return node;
+        }
+
+        if (key < node->key) {
+            node->left = deleteRecursive(node->left, key);
+        } else if (key > node->key) {
+            node->right = deleteRecursive(node->right, key);
+        } else {
+            if (node->left == nullptr) {
+                TreeNode* temp = node->right;
+                delete node;
+                return temp;
+            } else if (node->right == nullptr) {
+                TreeNode* temp = node->left;
+                delete node;
+                return temp;
+            }
+
+            TreeNode* temp = findMinNode(node->right);
+            node->key = temp->key;
+            node->right = deleteRecursive(node->right, temp->key);
+        }
+        return node;
+    }
+
+public:
+    BinarySearchTree() : root(nullptr) {}
+
+    void insert(int key) {
+        root = insertRecursive(root, key);
+    }
+
+    void remove(int key) {
+        root = deleteRecursive(root, key);
+    }
+
+    void printInorderRecursive(TreeNode* node) {
+        if (node != nullptr) {
+            printInorderRecursive(node->left);
+            cout << node->key << " ";
+            printInorderRecursive(node->right);
+        }
+    }
+
+    void printInorder() {
+        printInorderRecursive(root);
+        cout << endl;
+    }
+};
+
+int main() {
+    BinarySearchTree bst;
+    bst.insert(5);
+    bst.insert(3);
+    bst.insert(7);
+    bst.insert(2);
+    bst.insert(4);
+    bst.insert(6);
+    bst.insert(8);
+
+    cout << "Inorder traversal of the BST: ";
+    bst.printInorder();
+
+    bst.remove(3);
+    cout << "Inorder traversal after removing 3: ";
+    bst.printInorder();
+
+    return 0;
+}
