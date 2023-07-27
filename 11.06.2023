@@ -1,0 +1,126 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class PlayerType {
+protected:
+    int sila;
+    int Ataka;
+    int Zashita;
+    int lovkost;
+
+public:
+    PlayerType(int str, int att, int def, int agi)
+        : sila(str), Ataka(att), Zashita(def), lovkost(agi) {}
+
+    virtual void attack() const = 0;
+};
+
+class Archer : public PlayerType {
+public:
+    Archer() : PlayerType(10, 25, 5, 30) {}
+
+    void attack() const override {
+        cout << "Archer attacks with a bow!" << endl;
+    }
+};
+
+class Mage : public PlayerType {
+public:
+    Mage() : PlayerType(5, 50, 3, 15) {}
+
+    void attack() const override {
+        cout << "Mage casts a powerful spell!" << endl;
+    }
+};
+
+class Tank : public PlayerType {
+public:
+    Tank() : PlayerType(30, 15, 20, 10) {}
+
+    void attack() const override {
+        cout << "Tank attacks with brute force!" << endl;
+    }
+};
+
+class Character {
+protected:
+    string name;
+    char gender;
+
+public:
+    Character(const string& n, char g) : name(n), gender(g) {}
+
+    virtual void changeName(const string& newName) = 0;
+    virtual void showInfo() const = 0;
+};
+
+class Human : public Character {
+private:
+    PlayerType* playerType;
+
+public:
+    Human(const string& n, char g, PlayerType* p) : Character(n, g), playerType(p) {}
+
+    void changeName(const string& newName) override {
+        name = newName;
+    }
+
+    void showInfo() const override {
+        cout << "Human - Name: " << name << ", Gender: " << gender << endl;
+        playerType->attack();
+    }
+};
+
+class Elf : public Character {
+private:
+    PlayerType* playerType;
+
+public:
+    Elf(const string& n, char g, PlayerType* p) : Character(n, g), playerType(p) {}
+
+    void changeName(const string& newName) override {
+        name = newName;
+    }
+
+    void showInfo() const override {
+        cout << "Elf - Name: " << name << ", Gender: " << gender << endl;
+        playerType->attack();
+    }
+};
+
+class Orc : public Character {
+private:
+    PlayerType* playerType;
+
+public:
+    Orc(const string& n, char g, PlayerType* p) : Character(n, g), playerType(p) {}
+
+    void changeName(const string& newName) override {
+        name = newName;
+    }
+
+    void showInfo() const override {
+        cout << "Orc - Name: " << name << ", Gender: " << gender << endl;
+        playerType->attack();
+    }
+};
+
+int main() {
+    Archer archer;
+    Mage mage;
+    Tank tank;
+
+    Human human("John", 'M', &archer);
+    Elf elf("Legolas", 'M', &mage);
+    Orc orc("Thrall", 'M', &tank);
+
+    human.showInfo();
+    elf.showInfo();
+    orc.showInfo();
+
+    human.changeName("Jane");
+    human.showInfo();
+
+    return 0;
+}
