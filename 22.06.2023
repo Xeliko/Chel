@@ -1,0 +1,189 @@
+#include <iostream>
+using namespace std;
+
+
+template<typename T>
+struct Node {
+    T data;
+    Node* next;
+
+    Node(T value) : data(value), next(nullptr) {}
+};
+
+template<typename T>
+class Queue {
+private:
+    Node<T>* front;
+    Node<T>* rear;
+
+public:
+    Queue() : front(nullptr), rear(nullptr) {}
+
+   
+    ~Queue() {
+        while (!isEmpty()) {
+            pop();
+        }
+    }
+
+    
+    void push(const T& value) {
+        Node<T>* newNode = new Node<T>(value);
+        if (isEmpty()) {
+            front = rear = newNode;
+        }
+        else {
+            rear->next = newNode;
+            rear = newNode;
+        }
+    }
+
+   
+    void pop() {
+        if (isEmpty()) {
+            cout << "Queue is empty. Cannot pop." << endl;
+            return;
+        }
+        Node<T>* temp = front;
+        front = front->next;
+        delete temp;
+    }
+
+    
+    T peek() const {
+        if (isEmpty()) {
+            cout << "Queue is empty. Cannot peek." << endl;
+            return T();
+        }
+        return front->data;
+    }
+
+    
+    bool isEmpty() const {
+        return front == nullptr;
+    }
+};
+
+
+template<typename T>
+class DeQueue {
+private:
+    Node<T>* front;
+    Node<T>* rear;
+
+public:
+    DeQueue() : front(nullptr), rear(nullptr) {}
+
+    
+    ~DeQueue() {
+        while (!isEmpty()) {
+            pop();
+        }
+    }
+
+    
+    void pushFront(const T& value) {
+        Node<T>* newNode = new Node<T>(value);
+        if (isEmpty()) {
+            front = rear = newNode;
+        }
+        else {
+            newNode->next = front;
+            front = newNode;
+        }
+    }
+
+    
+    void pushBack(const T& value) {
+        Node<T>* newNode = new Node<T>(value);
+        if (isEmpty()) {
+            front = rear = newNode;
+        }
+        else {
+            rear->next = newNode;
+            rear = newNode;
+        }
+    }
+
+    
+    void popFront() {
+        if (isEmpty()) {
+            cout << "DeQueue is empty. Cannot pop from front." << endl;
+            return;
+        }
+        Node<T>* temp = front;
+        front = front->next;
+        delete temp;
+    }
+
+    
+    void popBack() {
+        if (isEmpty()) {
+            cout << "DeQueue is empty. Cannot pop from back." << endl;
+            return;
+        }
+        if (front == rear) {
+            delete front;
+            front = rear = nullptr;
+        }
+        else {
+            Node<T>* temp = front;
+            while (temp->next != rear) {
+                temp = temp->next;
+            }
+            delete rear;
+            rear = temp;
+            rear->next = nullptr;
+        }
+    }
+
+    
+    T peekFront() const {
+        if (isEmpty()) {
+            cout << "DeQueue is empty. Cannot peek from front." << endl;
+            return T();
+        }
+        return front->data;
+    }
+
+    
+    T peekBack() const {
+        if (isEmpty()) {
+            cout << "DeQueue is empty. Cannot peek from back." << endl;
+            return T();
+        }
+        return rear->data;
+    }
+
+    
+    bool isEmpty() const {
+        return front == nullptr;
+    }
+};
+
+int main() {
+   
+    Queue<int> queue;
+    queue.push(1);
+    queue.push(2);
+    queue.push(3);
+
+    cout << "Front: " << queue.peek() << endl;
+    queue.pop();
+    cout << "Front: " << queue.peek() << endl;
+
+    
+    DeQueue<string> deQueue;
+    deQueue.pushFront("Front1");
+    deQueue.pushFront("Front2");
+    deQueue.pushBack("Back1");
+    deQueue.pushBack("Back2");
+
+    cout << "Front: " << deQueue.peekFront() << ", Back: " << deQueue.peekBack() << endl;
+    deQueue.popFront();
+    cout << "Front: " << deQueue.peekFront() << ", Back: " << deQueue.peekBack() << endl;
+    deQueue.popBack();
+    cout << "Front: " << deQueue.peekFront() << ", Back: " << deQueue.peekBack() << endl;
+
+    return 0;
+}
