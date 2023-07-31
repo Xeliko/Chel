@@ -1,0 +1,128 @@
+#include <iostream>
+#include <vector>
+#include <string>
+
+using namespace std;
+
+class Fraction {
+public:
+    Fraction(int numerator = 0, int denominator = 1) : num(numerator), denom(denominator) {}
+
+    Fraction operator+(const Fraction& other) const {
+        return Fraction(num * other.denom + other.num * denom, denom * other.denom);
+    }
+
+    Fraction operator-(const Fraction& other) const {
+        return Fraction(num * other.denom - other.num * denom, denom * other.denom);
+    }
+
+    Fraction operator*(const Fraction& other) const {
+        return Fraction(num * other.num, denom * other.denom);
+    }
+
+    Fraction operator/(const Fraction& other) const {
+        return Fraction(num * other.denom, denom * other.num);
+    }
+
+    friend ostream& operator<<(ostream& os, const Fraction& frac) {
+        os << frac.num << "/" << frac.denom;
+        return os;
+    }
+
+private:
+    int num;
+    int denom;
+};
+
+class Student {
+public:
+    Student(const string& name, int age) : name(name), age(age) {}
+
+    friend ostream& operator<<(ostream& os, const Student& student) {
+        os << "Name: " << student.name << ", Age: " << student.age;
+        return os;
+    }
+
+    bool operator>(const Student& other) const {
+        return age > other.age;
+    }
+
+    bool operator<(const Student& other) const {
+        return age < other.age;
+    }
+
+    bool operator==(const Student& other) const {
+        return age == other.age;
+    }
+
+    bool operator!=(const Student& other) const {
+        return age != other.age;
+    }
+
+private:
+    string name;
+    int age;
+};
+
+class Classroom {
+public:
+    void addStudent(const Student& student) {
+        students.push_back(student);
+    }
+
+    friend ostream& operator<<(ostream& os, const Classroom& classroom) {
+        for (const auto& student : classroom.students) {
+            os << student << endl;
+        }
+        return os;
+    }
+
+private:
+    vector<Student> students;
+};
+
+int main() {
+    
+
+    Fraction frac1(1, 2);
+    Fraction frac2(3, 4);
+
+    Fraction sum = frac1 + frac2;
+    cout << "Sum: " << sum << endl;
+
+    Fraction diff = frac1 - frac2;
+    cout << "Difference: " << diff << endl;
+
+    Fraction prod = frac1 * frac2;
+    cout << "Product: " << prod << endl;
+
+    Fraction div = frac1 / frac2;
+    cout << "Division: " << div << endl;
+
+    Student student1("Alice", 20);
+    Student student2("Bob", 22);
+    Student student3("Eve", 19);
+
+    if (student1 > student2) {
+        cout << "Alice is older than Bob." << endl;
+    }
+    else {
+        cout << "Alice is not older than Bob." << endl;
+    }
+
+    if (student1 == student3) {
+        cout << "Alice and Eve are the same age." << endl;
+    }
+    else {
+        cout << "Alice and Eve are not the same age." << endl;
+    }
+
+    Classroom classroom;
+    classroom.addStudent(student1);
+    classroom.addStudent(student2);
+    classroom.addStudent(student3);
+
+    cout << "Classroom:\n" << classroom;
+
+    return 0;
+}
