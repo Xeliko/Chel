@@ -1,0 +1,79 @@
+// Zadaniye 1
+//using System.ComponentModel.Design;
+//Console.WriteLine("Vvedite chislo v diapazone 1-100: ");//int chislo = int.Parse(Console.ReadLine());
+
+//if (chislo > 100)//{
+//    Console.WriteLine("Chislo bolwe 100");
+//}
+//else if (chislo % 3 == 0 & chislo % 5 == 0)//{
+//    Console.WriteLine("Fizz Buzz");
+//}
+
+//else if (chislo % 3 == 0)//{
+//    Console.WriteLine("Fizz");
+//}
+//else if (chislo % 5 == 0)
+//{
+//    Console.WriteLine( "Buzz");
+//}
+//else if (chislo % 3 != 0 & chislo %5 != 0)
+//{
+//    Console.WriteLine(chislo); ;
+//}
+
+//Zadaniye 2
+//Console.WriteLine("Vvedite chislo: ");//int chislo = int.Parse(Console.ReadLine());
+//Console.WriteLine("Vvedite procent: ");
+//int procent = int.Parse(Console.ReadLine());
+//int result = (procent * chislo) / 100;
+//Console.WriteLine(result); 
+//Zadaniye 3
+
+//Console.WriteLine("Vvedite pervoye chislo: ");
+//string chislo1 = Console.ReadLine();
+//Console.WriteLine("Vvedite vtoroye chislo: ");//string chislo2 =  Console.ReadLine();
+//Console.WriteLine("Vvedite tretyee chislo: ");
+//string chislo3 = Console.ReadLine();
+//Console.WriteLine("Vvedite chetvertoye chislo: ");//string chislo4 =  Console.ReadLine();
+//Console.WriteLine(chislo1 + chislo2 + chislo3 + chislo4);
+
+//Zadaniye 4 ?
+
+//Zadaniye 5 ?
+//Zadaniye 6
+//Console.WriteLine("Vvedite temperaturu po Franqentu: ");
+//int temp = int.Parse(Console.ReadLine());
+//Console.WriteLine((temp - 32) * 5 / 9);
+
+
+//Zadaniye 7
+
+//Console.WriteLine("Vvedite pervoye chislo: ");
+//int chislo1 = int.Parse(Console.ReadLine());
+
+
+//Console.WriteLine("Vvedite vtoroye chislo: ");
+//int chislo2 = int.Parse(Console.ReadLine());
+
+//int chislo_zameni1 = chislo1;
+
+//while (chislo1 > chislo2)
+//{
+//	chislo1 -= 1;
+//	if (chislo1 % 2 == 0)
+//	{
+//		Console.WriteLine(chislo1);
+//	}
+//}
+
+
+
+
+//for(int i = chislo1;i <= chislo2; i++)
+//{
+
+//	if (i % 2 == 0)
+//	{
+//		Console.WriteLine(i);
+//	}
+//}
