@@ -1,0 +1,178 @@
+
+
+//Zadaniye 1
+//Console.WriteLine("Vvedite dlinu: ");//int dlina = int.Parse(Console.ReadLine());
+//Console.WriteLine("Vvedite simvol: ");
+//string simvol =  Console.ReadLine();    
+//for (int i = 0; i < dlina; i++)
+//{// for (int j = 0; j < dlina; j++)
+// {//        Console.Write(simvol);
+//    }//    Console.WriteLine();
+//}
+//Console.WriteLine();
+
+//Zadaniye 2
+//Console.WriteLine("Vvedite chislo: ");
+//int chislo = int.Parse(Console.ReadLine());//int chislo_copy = chislo;
+//int[] arr = new int[chislo];
+//Array.Reverse(arr);
+//if (chislo == chislo_copy)
+//{
+//    Console.WriteLine("Chislo yavlyayetsa polindromom");//}
+//else//{
+//    Console.WriteLine("Chislo ne yavlyayetsa polindromom");
+//}
+
+
+//Zadaniye 3
+
+
+//Console.WriteLine("Vvedite chisla dlya massiva: ");
+//int arr_nums = int.Parse(Console.ReadLine());
+
+//Console.WriteLine("Vvedite chisla filtracii: "); 
+//int filteraciya = int.Parse(Console.ReadLine());
+
+
+//int[] arr = new int[arr_nums];
+//int[] filter = new int[filteraciya];
+
+
+//for (int i = 0; i < arr_nums; i++)
+//{
+//	for (int j = 0; j < filteraciya; j++)
+//	{
+//		if (filter[j] == arr[i])
+//		{
+//            Console.Write(filter);
+//        }
+
+//	}
+//}
+
+
+//Создайте класс «Веб-сайт». Необходимо хранить в 
+//полях класса: название сайта, путь к сайту, описание 
+//сайта, ip адрес сайта. Реализуйте методы класса для ввода 
+//данных, вывода данных, реализуйте доступ к отдельным 
+//полям через методы класса. 
+
+//Zadaniye 4
+
+
+//#if false
+//class WebSite
+//{
+//    private string _siteName = string.Empty;
+//    private string _siteUrl = string.Empty; 
+//    private string opisaniye = string.Empty;
+//    private string ip_adress = string.Empty;
+
+//    public void input_data()
+//    {
+//        Console.WriteLine("Vvedite nazvaniye sayta: ");
+//        _siteName = Console.ReadLine();
+
+//        Console.WriteLine("Vvedte ssilku na sayt: ");
+//        _siteUrl = Console.ReadLine();
+
+//        Console.WriteLine("Vvedite opisaniye sayta: ");
+//        opisaniye = Console.ReadLine();
+
+//        Console.WriteLine("Vvedite ip adres sayta: ");
+//        ip_adress = Console.ReadLine();
+//    }
+
+//    public void output_data()
+//    {
+//        Console.WriteLine("Informaciya o sayte:");
+//        Console.WriteLine($"Nazvanie sayta: {_siteName}");
+//        Console.WriteLine($"Ssilka na sayt: {_siteUrl}");
+//        Console.WriteLine($"Opisaniye sayta: {opisaniye}");
+//        Console.WriteLine($"Ip adres sayta {ip_adress}");
+//    }
+
+//    class programm
+//    {
+//        static void Main()
+//        {
+//            WebSite website = new WebSite();
+//            website.input_data();
+//            Console.Clear();
+//            website.output_data();
+//        }
+//    }
+//}
+
+
+
+
+//#if false
+
+//using System.Globalization;
+
+///*
+// * Создайте класс «Журнал». Необходимо хранить в 
+//полях класса: название журнала, год основания, описание журнала, контактный телефон, контактный e-mail. 
+//Реализуйте методы класса для ввода данных, вывода 
+//данных, реализуйте доступ к отдельным полям через 
+//методы класса
+// */
+
+//class Journal
+//{
+//    private string _journalName = string.Empty;
+//    private DateTime _dateOfFoundation;
+//    private string _descriptionJournal = string.Empty;
+//    private string _contactPhone = string.Empty;
+//    private string _contactEmail = string.Empty;
+
+
+//    public void InputData()
+//    {
+//        Console.WriteLine("Vvedite nazvanie jurnala: ");
+//        _journalName = Console.ReadLine();
+
+//        Console.WriteLine("Vvedite datu osnovaniya: (god.mesyac.den)");
+//        string _dateOfFoundations = Console.ReadLine();
+
+//        if (DateTime.TryParseExact(_dateOfFoundations, "yyyy.MM.dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime _dateOfFoundation))
+//        {
+//            _dateOfFoundation = _dateOfFoundation;
+//        }
+//        else
+//        {
+//            Console.WriteLine("Nevernaya forma dati.");
+//        }
+
+//        Console.WriteLine("Vvedite opisaniya jurnala: ");
+//        _descriptionJournal = Console.ReadLine();
+
+//        Console.WriteLine("Vvedite kontanktniy telefon: ");
+//        _contactPhone = Console.ReadLine();
+
+//        Console.WriteLine("Vvedite kontaktniy e-mail: ");
+//        _contactEmail = Console.ReadLine();
+//    }
+
+//    public void OutputData()
+//    {
+//        Console.WriteLine("Informaciya o jurnale: ");
+//        Console.WriteLine($"Nazvanie jurnala: {_journalName}");
+//        Console.WriteLine($"God osnovaniye jurnala: {_dateOfFoundation.ToString()}");
+//        Console.WriteLine($"Opisaniye jurnala: {_descriptionJournal}");
+//        Console.WriteLine($"Kontaktniy telefon: {_contactPhone}");
+//        Console.WriteLine($"Kontaktniy e-mail: {_contactEmail}");
+//    }
+
+//    class Program
+//    {
+//        static void Main()
+//        {
+//            Journal journal = new Journal();
+//            journal.InputData();
+//            Console.Clear();
+//            journal.OutputData();
+//        }
+//    }
+//
