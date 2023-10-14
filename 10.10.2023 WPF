@@ -1,0 +1,78 @@
+<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="Калькулятор" Height="450" Width="810">
+    <Grid Name="MainRoot" Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Name="FirstColumn"/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+
+        <Button Background="LightSteelBlue" Grid.Row="1">
+
+            <Image Source="https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Internet_Explorer_10%2B11_logo.svg/800px-Internet_Explorer_10%2B11_logo.svg.png"></Image>
+        </Button>
+
+        <Button Background=" Orange" Grid.Row="1" Grid.Column="1">
+            <Image Source="https://filestore.community.support.microsoft.com/api/images/3eec405a-2020-4149-9fd9-afc533104a9c"></Image>
+        </Button>
+
+
+        <Button Background="red" Grid.Column="2" Grid.Row="2">
+            <Image Source="https://icons.iconarchive.com/icons/dakirby309/windows-8-metro/256/Other-Power-Shut-Down-Metro-icon.png"></Image>
+        </Button>
+
+        <Button Background="LightGreen" Grid.Column="3" Grid.Row="3">
+            <Image Source="https://icon-library.com/images/chrome-metro-icon/chrome-metro-icon-0.jpg" RenderTransformOrigin="0.5,0.5" Height="257" Width="272">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.436"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.755"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Button>
+
+
+        <Button  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Background="White">
+            <Image Source="https://www.stockdesktopwidget.com/img/logo-1200x1200.png" Height="166" Width="225"></Image>
+
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Background="CornflowerBlue">
+            <Image Source="https://www.eightforums.com/attachments/weather-ico.13437/"></Image>
+
+        </Button>
+
+        <Label Grid.Row="0" Grid.Column="3">
+            <Image Source="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"></Image>
+        </Label>
+
+        <Label   HorizontalAlignment="Left" VerticalAlignment="Center" Background="Blue" Width="839" FontSize="24" Grid.ColumnSpan="4" Height="176" />
+        <TextBlock Text="Start" FontSize="40" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBlock Text="BadBoy" HorizontalAlignment="Right" Grid.Column="2" Margin="0,46,101,99" Grid.RowSpan="2" FontSize="40" Grid.ColumnSpan="2"></TextBlock>
+
+
+
+
+
+    </Grid>
+</Window>
