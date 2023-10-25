@@ -1,0 +1,68 @@
+<Window x:Class="textblocknot1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:textblocknot1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid RenderTransformOrigin="0.5,0.488">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="200*"/>
+        </Grid.RowDefinitions>
+
+
+        <ComboBox Text="Файл" Margin="0,0,0,12" HorizontalAlignment="Left" Width="56" RenderTransformOrigin="0.408,0.456" IsEditable="True">
+
+            <TextBlock>Создать</TextBlock>
+            <TextBlock>Новое окно</TextBlock>
+            <TextBlock>Открыть</TextBlock>
+            <TextBlock>Сохранить</TextBlock>
+            <TextBlock>Сохранить как</TextBlock>
+            <TextBlock>Параметры страницы..</TextBlock>
+            <TextBlock>Печать..</TextBlock>
+            <TextBlock>Выход</TextBlock>
+
+        </ComboBox>
+
+        <ComboBox Text="Правка" Margin="56,0,646,12"  IsEditable="True">
+            <TextBlock>Отменить</TextBlock>
+            <TextBlock>Вырезать</TextBlock>
+            <TextBlock>Копировать</TextBlock>
+            <TextBlock>Вставить</TextBlock>
+            <TextBlock>Удалить</TextBlock>
+            <TextBlock>Найти..</TextBlock>
+            <TextBlock>Найти далее</TextBlock>
+            <TextBlock>Найти ранее</TextBlock>
+            <TextBlock>Змаенить..</TextBlock>
+            <TextBlock>Перейти</TextBlock>
+            <TextBlock>Выделить все</TextBlock>
+            <TextBlock>Время и дата</TextBlock>
+        </ComboBox>
+
+        <ComboBox Text="Формат" Margin="138,0,570,12" IsEditable="True">
+            <TextBlock>Перенос по словам</TextBlock>
+            <TextBlock>Шрифт..</TextBlock>
+        </ComboBox>
+
+
+        <ComboBox Text="Вид" Margin="213,0,520,12" IsEditable="True">
+            <TextBlock>Масштаб</TextBlock>
+
+
+        </ComboBox>
+
+
+        <ComboBox Text="Справка" IsEditable="True" Margin="261,0,448,0" Height="22" VerticalAlignment="Top" RenderTransformOrigin="0.27,0.411">
+            <TextBlock>Просмотреть справку</TextBlock>
+            <TextBlock>Отправить отзыв</TextBlock>
+            <TextBlock>О программе</TextBlock>
+        </ComboBox>
+
+        <TextBox Margin="0,22,0,0" Grid.RowSpan="2"/>
+
+
+    </Grid>
+</Window>
